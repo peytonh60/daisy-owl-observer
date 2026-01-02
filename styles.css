@@ -1,0 +1,177 @@
+
+:root { --sidebar-width: 260px; --bg: #7bc49d; --accent: #2b6cb0; }
+html { scroll-behavior: smooth; }
+header { position:fixed; top:0; left:0; right:0; height:70px; display:flex; align-items:center; gap:12px; padding:0 12px; background:#6fc1b8; border-bottom:1px solid #eee; z-index:30; }
+.brand { font-weight:600; }
+.menu-btn { background:none; border:0; font-size:40px; padding:8px; cursor:pointer; color:#111}
+/* Sidebar */
+.sidebar { position:fixed; top:0; left:0; height:100%; width:var(--sidebar-width); background:var(--bg); box-shadow: 2px 0 8px rgba(0,0,0,.12); transform:translateX(-110%); transition: transform .25s ease; z-index:40; padding:72px 16px 16px; }
+.sidebar.open { transform:translateX(0); }
+.sidebar nav a { display:block; padding:10px 8px; color:#111; text-decoration:none; border-radius:4px; }
+.sidebar nav a:focus, .sidebar nav a:hover { background:#f0f8ff; outline:none; }
+.close-btn { position:absolute; top:8px; right:8px; background:none; border:0; font-size:20px; color:#111; padding:8px; cursor:pointer; }
+
+/* backdrop */
+.backdrop { position:fixed; inset:0; background:rgba(0,0,0,.3); opacity:0; pointer-events:none; transition:opacity .2s; z-index:35; }
+.backdrop.show { opacity:1; pointer-events:auto; }
+
+/* Content */
+/* main */
+main { padding:80px 16px 24px; max-width:900px; margin:0 auto; max-width: 1100px; }
+img { 
+  max-width:100%; 
+  display:block; 
+  margin:0; 
+}
+img { scroll-margin-top:72px; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+.section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.section > * {
+  min-width: 0;
+}
+.section > figure {
+  flex: 1 1 50%;
+}
+
+.section > div {
+  flex: 1 1 50%;
+}
+
+.section-image{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.about-project-text {
+  font-size: .95rem;
+  padding: 0;
+}
+.section-double-image {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  height: auto;
+  max-width: 100%;
+  padding:0;
+}
+.divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 3rem 0;
+}
+
+.section-title {
+  scroll-margin-top: 80px;
+}
+.section-text {
+  padding: 1rem 0rem;
+}
+figure {
+  border: 1px solid #ccc;
+  text-align: center; 
+  flex:1;
+}
+
+figcaption {
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 5px;
+}
+
+.credit {
+  display: block; 
+  font-size: 1em;
+  font-style: italic;
+  color: #666;
+}
+
+h1, h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: .5rem;
+}
+li {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+ul {
+  margin: .5rem 0;
+}
+
+/* Persistent controls */
+.persistent-controls { margin-top:12px; display:flex; justify-content:flex-end; }
+.persistent-controls #quiz-restart { background:#ef4444; color:#fff; border:0; padding:8px 10px; border-radius:6px; cursor:pointer; min-height: 44px; margin-right: 10rem;}
+.persistent-controls #quiz-restart:focus { outline:2px solid #fbcfe8; }
+@keyframes pop { 0% { transform: scale(.6); opacity:0 } 60% { transform: scale(1.08); opacity:1 } 100% { transform: scale(1); opacity:1 } }
+@keyframes completedGlow { from { box-shadow: 0 0 0 rgba(59,130,246,0); } to { box-shadow: 0 14px 40px rgba(59,130,246,.12); } }
+.quiz.completed { animation: completedGlow .45s ease both; }
+
+@media (max-width: 768px) {
+  .section {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+  figure {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 100%;
+  }
+  section-image {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width:100%;
+  }
+  .section-text {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p,
+  li {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+}
+
