@@ -165,6 +165,12 @@ li {
 ul {
   margin: .5rem 0;
 }
+.video-list li{
+  justify-content: left;
+}
+.resource-box {
+  justify-content: center;
+}
 .footer {
   text-align: center;
   padding: 1rem;
