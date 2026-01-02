@@ -1,7 +1,7 @@
 
-:root { --sidebar-width: 260px; --bg: #7bc49d; --accent: #2b6cb0; }
+:root { --sidebar-width: 260px; --bg: #a37bc4; --accent: #54c4e9; }
 html { scroll-behavior: smooth; }
-header { position:fixed; top:0; left:0; right:0; height:70px; display:flex; align-items:center; gap:12px; padding:0 12px; background:#6fc1b8; border-bottom:1px solid #eee; z-index:30; }
+header { position:fixed; top:0; left:0; right:0; height:70px; display:flex; align-items:center; gap:12px; padding:0 12px; background:#89ceff; border-bottom:1px solid #eee; z-index:30; }
 .brand { font-weight:600; }
 .menu-btn { background:none; border:0; font-size:40px; padding:8px; cursor:pointer; color:#111}
 /* Sidebar */
@@ -76,6 +76,11 @@ body {
   background-color: #eee;
   margin: 3rem 0;
 }
+.mini-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 1rem 0;
+}
 
 .section-title {
   scroll-margin-top: 80px;
@@ -93,8 +98,27 @@ figcaption {
   font-size: 0.8em;
   color: #555;
   margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
 }
-
+.resource-box {
+  font-size: 1em;
+  text-align: left;
+}
+.figtitle {
+  font-size: 1em;
+  padding: 0;
+  text-align: center;
+}
+.download {
+  min-height: 44px;
+  font-size: 1.5em;
+  color: #111;
+  background-color: #fbcfe8;
+  align-self: stretch;
+  margin-top: 10px;
+  margin-bottom: 22px;
+}
 .credit {
   display: block; 
   font-size: 1em;
