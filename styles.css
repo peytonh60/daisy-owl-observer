@@ -246,13 +246,15 @@ h2 {
 }
 @media (max-width: 768px) {
   section {
-    align-items: stretch;
+    display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 100%;
+    align-items: stretch;
     gap: 1.25rem;
-    margin: 0;
-    padding: 0;
+  }
+  section > figure,
+  section > div {
+    flex: 1 1 auto;
+    width: 100%;
   }
   figure {
     margin-left: auto;
@@ -287,6 +289,19 @@ h2 {
   .resource-box {
     align-self: center;
     max-width: 90%;
+  }
+  body {
+    font-size: 1.1rem;
+  }
+  p, li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+    h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.4rem;
   }
 }
 @media (min-width: 1024px) {
