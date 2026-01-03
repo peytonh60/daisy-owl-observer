@@ -270,6 +270,20 @@ h2 {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  .video-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .video-list li {
+    display: flex;
+    justify-content: center;
+  }
+  .resource-box {
+    align-self: center;
+    max-width: 90%;
+  }
 }
 @media (min-width: 1024px) {
   body {
