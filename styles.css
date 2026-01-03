@@ -132,7 +132,9 @@ section {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   margin: 0.5rem 0;
 }
-
+.section-title {
+  scroll-margin: 85px;
+}
 section > figure,
 section > div {
   flex: 1 1 auto;
@@ -170,7 +172,12 @@ figcaption {
   text-align: center;
   margin: 5px 0;
 }
-
+.credit {
+  display: block; 
+  font-size: 1em;
+  font-style: italic;
+  color: #666;
+}
 .owl-badge {
   max-width: 200px;
 }
