@@ -133,7 +133,7 @@ section {
   margin: 0.5rem 0;
 }
 .section-title {
-  scroll-margin: 85px;
+  scroll-margin: 5rem;
 }
 section > figure,
 section > div {
@@ -212,7 +212,7 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   color: #2b6cb0;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center;
+  text-align: left;
   max-width: 90%;
   margin: 0 auto 1rem auto;
   cursor: pointer;
