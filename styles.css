@@ -1,6 +1,34 @@
+/* ==================== Root Variables ==================== */
+:root {
+  --sidebar-width: 260px;
+  --bg: #a37bc4;
+  --accent: #54c4e9;
+  --container-padding: 1rem;
+}
 
-:root { --sidebar-width: 260px; --bg: #a37bc4; --accent: #54c4e9; --containter-padding: 1rem;}
+/* ==================== Global ==================== */
 html { scroll-behavior: smooth; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1.1rem; /* mobile-first base size */
+  background-color: #f8f9fa;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: 0;
+  scroll-margin-top: 72px;
+}
+
+/* ==================== Header ==================== */
 header {
   position: fixed;
   top: 0;
@@ -14,24 +42,80 @@ header {
   padding-right: var(--container-padding);
   background: #89ceff;
   border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   z-index: 30;
 }
 
-.brand { font-weight:600; }
-.menu-btn { background:none; border:0; font-size:40px; padding:8px; cursor:pointer; color:#111}
-/* Sidebar */
-.sidebar { position:fixed; top:0; left:0; height:100%; width:var(--sidebar-width); background:var(--bg); box-shadow: 2px 0 8px rgba(0,0,0,.12); transform:translateX(-110%); transition: transform .25s ease; z-index:40; padding:72px 16px 16px; }
-.sidebar.open { transform:translateX(0); }
-.sidebar nav a { display:block; padding:10px 8px; color:#111; text-decoration:none; border-radius:4px; }
-.sidebar nav a:focus, .sidebar nav a:hover { background:#f0f8ff; outline:none; }
-.close-btn { position:absolute; top:8px; right:8px; background:none; border:0; font-size:20px; color:#111; padding:8px; cursor:pointer; }
+.brand { font-weight: 600; }
 
-/* backdrop */
-.backdrop { position:fixed; inset:0; background:rgba(0,0,0,.3); opacity:0; pointer-events:none; transition:opacity .2s; z-index:35; }
-.backdrop.show { opacity:1; pointer-events:auto; }
+.menu-btn {
+  background: none;
+  border: 0;
+  font-size: 40px;
+  padding: 8px;
+  cursor: pointer;
+  color: #111;
+}
 
-/* Content */
-/* main */
+/* ==================== Sidebar ==================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--sidebar-width);
+  background: var(--bg);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+  transform: translateX(-110%);
+  transition: transform 0.25s ease;
+  z-index: 40;
+  padding: 72px 16px 16px;
+}
+
+.sidebar.open { transform: translateX(0); }
+
+.sidebar nav a {
+  display: block;
+  padding: 10px 8px;
+  color: #111;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a:focus {
+  background: #f0f8ff;
+  transform: translateX(2px);
+  outline: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: 0;
+  font-size: 20px;
+  color: #111;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* ==================== Backdrop ==================== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 35;
+}
+
+.backdrop.show { opacity: 1; pointer-events: auto; }
+
+/* ==================== Main Content ==================== */
 main {
   max-width: 900px;
   margin: 0 auto;
@@ -40,179 +124,175 @@ main {
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
 }
-header > *,
-main > * {
-  max-width: 100%;
-}
 
-img { 
-  max-width:100%; 
-  display:block; 
-  margin:0; 
-}
-img { scroll-margin-top:72px; }
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  font-size: 16px;
-  margin:0;
-}
+header > *, main > * { max-width: 100%; }
+
+/* ==================== Sections ==================== */
 section {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column; /* mobile-first */
+  align-items: stretch;
+  gap: 1.5rem;
   width: 100%;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-section > * {
-  min-width: 0;
-}
-section > figure {
-  flex: 1 1 50%;
-}
-
-section > div {
-  flex: 1 1 50%;
-}
-
-.section-image{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.owl-badge {
-  max-width: 200px;
-  height: auto;
-  object-fit: cover;
-}
-.about-project-text {
-  font-size: .95rem;
   padding: 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 5px;
+  margin-top: 5px
 }
+
+section > * { min-width: 0; }
+section > figure, section > div { flex: 1 1 auto; width: 100%; }
+
+.section-image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .section-double-image {
   display: flex;
   flex-direction: column;
-  gap: 0rem;
+  gap: 0;
   height: auto;
   max-width: 100%;
-  padding:0;
-}
-.divider {
-  height: 1px;
-  background-color: #eee;
-  margin: 3rem 0;
-}
-.mini-divider {
-  height: 1px;
-  background-color: #eee;
-  margin: 1rem 0;
+  padding: 0;
 }
 
-.section-title {
-  scroll-margin-top: 80px;
-}
-.section-text {
-  padding: 1rem 0rem;
-}
+section-double-image > img { flex: 1; width: 100%; height: auto; }
+
 figure {
   border: 1px solid #ccc;
-  text-align: center; 
-  flex:1;
+  text-align: center;
+  margin: 0;
+  flex: 1 1 auto;
 }
 
 figcaption {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  line-height: 1.4;
   color: #555;
-  margin-top: 5px;
-  margin-bottom: 5px;
   text-align: center;
+  margin: 5px 0;
 }
-.resource-box {
-  font-size: 1em;
-  text-align: left;
+.owl-badge {
+  max-width: 200px;
 }
-.figtitle {
-  font-size: 1em;
+/* ==================== Typography ==================== */
+h1 { font-size: 1.8rem; line-height: 2.1rem; margin-top:0; margin-bottom:1rem; font-weight:600; letter-spacing:0.5px; }
+h2 { font-size: 1.4rem; line-height: 1.9rem; margin-top:0; margin-bottom:0.75rem; font-weight:600; letter-spacing:0.5px; }
+p, li { font-size: 1.05rem; line-height:1.8; margin-bottom:1rem; }
+ul { margin:0; }
+a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word-break: break-word; }
+
+/* ==================== Lists ==================== */
+.video-list {
+  list-style: none;
   padding: 0;
+  margin: 0 auto;
   text-align: center;
 }
-.download {
-  min-height: 44px;
-  font-size:.75em;
-  text-underline-offset: 2px;
-  color:#2b6cb0;
-  background-color: #f9a8d4;
-  color: #111;
-  word-break: break-word;
-  align-self: stretch;
-  margin-top: 10px;
-  margin-bottom: 22px;
-  border-radius: 12px;
-  padding: 10px;
-}
-.download2 {
-  min-height: 44px;
-  font-size: .75em;
-  color: #111;
-  background-color: #b8f2ff;
-  align-self: stretch;
-  border-radius: 12px;
-  padding: 10px; 
-}
-.download3 {
-  min-height: 44px;
-  font-size: .75em;
-  color: #111;
-  background-color: #e7ceff;
-  align-self: stretch;
-  margin-bottom: 10px;
-  border-radius: 15px;
-  padding: 10px;
-}
-.credit {
-  display: block; 
-  font-size: 1em;
-  font-style: italic;
-  color: #666;
-}
 
-h1, h2 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  font-size: 1rem;
-  line-height: 2;
-  margin-bottom: .5rem;
-}
-li {
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 0.5rem;
-}
-ul {
-  margin:0;
-}
-a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  color:#2b6cb0;
-  word-break: break-word;
-}
-.video-list li{
-  justify-content: left;
-}
-.resource-box {
+.video-list li {
+  display: flex;
   justify-content: center;
+  margin-bottom: 1rem;
+  background-color: #f0f8ff;
+  padding: .75rem 1rem;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.video-list li:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* Base card styling (mobile-first) */
+.resources-list li {
+  list-style: none;       /* remove bullets */
+  margin-bottom: 1rem;
+}
+
+/* ==================== Unified Clickable Cards ==================== */
+
+/* Base card styling for video links, resources, and downloads (mobile-first) */
+.video-list li a,
+.resources-list li a {
+  display: block;
+  background-color: #f9fafb;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  color: #2b6cb0;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  text-align: center;       /* center text on mobile */
+  max-width: 90%;           /* mobile-friendly width */
+  margin: 0 auto 1rem auto; /* center horizontally on mobile */
+  cursor: pointer;
+}
+
+/* Hover and focus effects */
+.video-list li a:hover,
+.video-list li a:focus,
+.resources-list li a:hover,
+.resources-list li a:focus {
+  background-color: #e7f0ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  outline: none;
+}
+/* ==================== Resource Boxes ==================== */
+.resource-box {
+  text-align: center;
+  align-self: center;
+  max-width: 90%;
+  margin: 0 auto 1rem auto;
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-box:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+
+
+.sidebar nav a {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar nav a:hover {
+  transform: translateX(2px);
+}
+
+/* ==================== Buttons ==================== */
+.download, .download2, .download3 {
+  font-size: 1rem;
+  padding: 12px 16px;
+  min-height: 44px;
+  border-radius: 12px;
+  margin: 0 0 1rem 0;
+  align-self: stretch;
+  word-break: break-word;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.download:hover, .download2:hover, .download3:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.download:focus, .download2:focus, .download3:focus { outline: 3px solid #54c4e9; outline-offset: 2px; }
+
+.download { background-color: #f9a8d4; color: #111; }
+.download2 { background-color: #b8f2ff; color: #111; }
+.download3 { background-color: #e7ceff; color: #111; }
+
+/* ==================== Dividers ==================== */
+.divider { height: 1px; background-color: #eee; margin: 3rem 0; }
+.mini-divider { height: 1px; background-color: #eee; margin: 1rem 0; }
+
+/* ==================== Footer ==================== */
 .footer {
   text-align: center;
   padding: 1rem;
@@ -221,115 +301,34 @@ a {
   margin-top: 2rem;
   color: #555;
 }
-.footer p {
-  margin: 0;;
-    margin:0;
-  font-size: 0.8rem;
-}
-.resources
-h2 {
-  margin-bottom: 1em;
-}
-.resources-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.resources-list li {
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  font-size: 1em;
-}
-.resources-list li:not(:last-child) {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.75rem;
-}
-@media (max-width: 768px) {
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.25rem;
-  }
-  section > figure,
-  section > div {
-    flex: 1 1 auto;
-    width: 100%;
-  }
-  figure {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+.footer p { margin: 0; font-size: 0.8rem; }
+
+/* ==================== Desktop Layout ==================== */
+@media (min-width: 769px) {
+  section { flex-direction: row; align-items: flex-start; gap: 2rem; }
+  section > figure, section > div { flex: 1 1 50%; width: 50%; }
+
+  .section-double-image { flex-direction: row; gap: 1rem; }
+  .section-double-image > img { flex: 1; width: 100%; height: auto; }
+
+  body { font-size: 1.5rem; line-height: 2.25rem; }
+  h1 { font-size: 2.8rem; line-height: 3.2rem; }
+  h2 { font-size: 2rem; line-height: 2.4rem; }
+  p, li { font-size: 1.5rem; line-height: 2.25rem; }
+
+  .video-list { text-align: left; }
+  .video-list li { justify-content: flex-start; margin-bottom: 1rem;}
+
+  /* Left-align all clickable cards */
+  .video-list li a,
+  .resources-list li a{
+    text-align: left;
     max-width: 100%;
+    margin: 0 0 1rem 0; /* remove horizontal centering */
   }
-  .section-image {
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    max-width:100%;
+  .video-list li,
+  .resources-list li {
+    display: block;
   }
-  .section-text {
-    padding: 0;
-  }
-  main{
-    margin-left: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .video-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .video-list li {
-    display: flex;
-    justify-content: center;
-  }
-  .resource-box {
-    align-self: center;
-    max-width: 90%;
-  }
-  body {
-    font-size: 1.1rem;
-  }
-  p, li {
-    font-size: 1.05rem;
-    line-height: 1.8;
-  }
-    h1 {
-    font-size: 1.8rem;
-  }
-  h2 {
-    font-size: 1.4rem;
-  }
-  .download, .download2, .download3 {
-  font-size: 1rem; /* matches body for readability */
-  padding: 12px 16px; /* slightly larger tappable area */
+  .resource-box { text-align: left; max-width: 100%; align-self: stretch; }
 }
- figcaption {
-    font-size: 0.9em;
-    line-height: 1.4;
-  }
-}
-@media (min-width: 1024px) {
-  body {
-    font-size: 1.5rem;
-    margin:0;
-  }
-
-  h1 {
-    font-size: 2.8rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  p,
-  li {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
-  }
-}
-
