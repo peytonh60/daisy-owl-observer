@@ -1,7 +1,22 @@
 
-:root { --sidebar-width: 260px; --bg: #a37bc4; --accent: #54c4e9; }
+:root { --sidebar-width: 260px; --bg: #a37bc4; --accent: #54c4e9; --containter-padding: 1rem;}
 html { scroll-behavior: smooth; }
-header { position:fixed; top:0; left:0; right:0; height:70px; display:flex; align-items:center; gap:12px; padding:0 12px; background:#89ceff; border-bottom:1px solid #eee; z-index:30; }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  background: #89ceff;
+  border-bottom: 1px solid #eee;
+  z-index: 30;
+}
+
 .brand { font-weight:600; }
 .menu-btn { background:none; border:0; font-size:40px; padding:8px; cursor:pointer; color:#111}
 /* Sidebar */
@@ -17,7 +32,19 @@ header { position:fixed; top:0; left:0; right:0; height:70px; display:flex; alig
 
 /* Content */
 /* main */
-main { padding:80px 16px 24px; max-width:900px; margin:0 auto; }
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 24px;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+header > *,
+main > * {
+  max-width: 100%;
+}
+
 img { 
   max-width:100%; 
   display:block; 
@@ -28,34 +55,40 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   font-size: 16px;
+  margin:0;
 }
-.section {
+section {
   display: flex;
   align-items: center;
   gap: 2rem;
-  max-width: 1024px;
-  margin: 0 auto;
+  width: 100%;
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-.section > * {
+section > * {
   min-width: 0;
 }
-.section > figure {
+section > figure {
   flex: 1 1 50%;
 }
 
-.section > div {
+section > div {
   flex: 1 1 50%;
 }
 
 .section-image{
   width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.owl-badge {
+  max-width: 200px;
   height: auto;
   object-fit: cover;
 }
@@ -113,8 +146,8 @@ figcaption {
 .download {
   min-height: 44px;
   font-size: 1em;
+  background-color: #f9a8d4;
   color: #111;
-  background-color: #fbcfe8;
   align-self: stretch;
   margin-top: 10px;
   margin-bottom: 22px;
@@ -163,7 +196,13 @@ li {
   margin-bottom: 0.5rem;
 }
 ul {
-  margin: .5rem 0;
+  margin:0;
+}
+a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color:#2b6cb0;
+  word-break: break-word;
 }
 .video-list li{
   justify-content: left;
@@ -197,30 +236,19 @@ h2 {
   line-height: 1.5;
   font-size: 1em;
 }
-.resources-list li a {
-  word-break: break-word;
-  color: #2b6cb0;
-  text-decoration: none;
-}
 .resources-list li:not(:last-child) {
   border-bottom: 1px solid #eee;
   padding-bottom: 0.75rem;
 }
-/* Persistent controls */
-.persistent-controls { margin-top:12px; display:flex; justify-content:flex-end; }
-.persistent-controls #quiz-restart { background:#ef4444; color:#fff; border:0; padding:8px 10px; border-radius:6px; cursor:pointer; min-height: 44px; margin-right: 10rem;}
-.persistent-controls #quiz-restart:focus { outline:2px solid #fbcfe8; }
-@keyframes pop { 0% { transform: scale(.6); opacity:0 } 60% { transform: scale(1.08); opacity:1 } 100% { transform: scale(1); opacity:1 } }
-@keyframes completedGlow { from { box-shadow: 0 0 0 rgba(59,130,246,0); } to { box-shadow: 0 14px 40px rgba(59,130,246,.12); } }
-.quiz.completed { animation: completedGlow .45s ease both; }
-
 @media (max-width: 768px) {
-  .section {
+  section {
     align-items: stretch;
     flex-direction: column;
     width: 100%;
     max-width: 100%;
     gap: 1.25rem;
+    margin: 0;
+    padding: 0;
   }
   figure {
     margin-left: auto;
@@ -237,18 +265,16 @@ h2 {
   .section-text {
     padding: 0;
   }
-    main,
-  section,
-  article {
+  main{
     margin-left: 0;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 }
-
 @media (min-width: 1024px) {
   body {
     font-size: 1.5rem;
+    margin:0;
   }
 
   h1 {
