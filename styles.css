@@ -145,9 +145,12 @@ figcaption {
 }
 .download {
   min-height: 44px;
-  font-size: 1em;
+  font-size:.75em;
+  text-underline-offset: 2px;
+  color:#2b6cb0;
   background-color: #f9a8d4;
   color: #111;
+  word-break: break-word;
   align-self: stretch;
   margin-top: 10px;
   margin-bottom: 22px;
@@ -156,7 +159,7 @@ figcaption {
 }
 .download2 {
   min-height: 44px;
-  font-size: 1em;
+  font-size: .75em;
   color: #111;
   background-color: #b8f2ff;
   align-self: stretch;
@@ -165,7 +168,7 @@ figcaption {
 }
 .download3 {
   min-height: 44px;
-  font-size: 1em;
+  font-size: .75em;
   color: #111;
   background-color: #e7ceff;
   align-self: stretch;
@@ -219,7 +222,8 @@ a {
   color: #555;
 }
 .footer p {
-  margin: 0;
+  margin: 0;;
+    margin:0;
   font-size: 0.8rem;
 }
 .resources
