@@ -13,13 +13,11 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
   line-height: 1.6;
-  font-size: 1.1rem; /* mobile-first base size */
+  font-size: 1.1rem; /* mobile-first */
   background-color: #f8f9fa;
 }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
 img {
   max-width: 100%;
@@ -38,8 +36,7 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding: 0 var(--container-padding);
   background: #89ceff;
   border-bottom: 1px solid #eee;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
@@ -119,51 +116,45 @@ header {
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding-top: 80px;
-  padding-bottom: 24px;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding: 80px var(--container-padding) 24px;
 }
-
-header > *, main > * { max-width: 100%; }
 
 /* ==================== Sections ==================== */
 section {
   display: flex;
-  flex-direction: column; /* mobile-first */
+  flex-direction: column;  /* stack by default */
   align-items: stretch;
   gap: 1.5rem;
   width: 100%;
-  padding: 0;
   padding: 1.5rem;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom: 5px;
-  margin-top: 5px
+  margin: 0.5rem 0;
 }
 
-section > * { min-width: 0; }
-section > figure, section > div { flex: 1 1 auto; width: 100%; }
+section > figure,
+section > div {
+  flex: 1 1 auto;
+  width: 100%;  /* full width on mobile */
+}
 
-.section-image {
+.section-image,
+.section-double-image > img {
   display: block;
-  margin: 0 auto;
   width: 100%;
   height: auto;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 .section-double-image {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  height: auto;
+  gap: 1rem;
   max-width: 100%;
   padding: 0;
 }
-
-section-double-image > img { flex: 1; width: 100%; height: auto; }
 
 figure {
   border: 1px solid #ccc;
@@ -179,17 +170,19 @@ figcaption {
   text-align: center;
   margin: 5px 0;
 }
+
 .owl-badge {
   max-width: 200px;
 }
+
 /* ==================== Typography ==================== */
-h1 { font-size: 1.8rem; line-height: 2.1rem; margin-top:0; margin-bottom:1rem; font-weight:600; letter-spacing:0.5px; }
-h2 { font-size: 1.4rem; line-height: 1.9rem; margin-top:0; margin-bottom:0.75rem; font-weight:600; letter-spacing:0.5px; }
+h1 { font-size: 1.8rem; line-height: 2.1rem; margin:0 0 1rem 0; font-weight:600; letter-spacing:0.5px; }
+h2 { font-size: 1.4rem; line-height: 1.9rem; margin:0 0 0.75rem 0; font-weight:600; letter-spacing:0.5px; }
 p, li { font-size: 1.05rem; line-height:1.8; margin-bottom:1rem; }
 ul { margin:0; }
 a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word-break: break-word; }
 
-/* ==================== Lists ==================== */
+/* ==================== Video List ==================== */
 .video-list {
   list-style: none;
   padding: 0;
@@ -201,25 +194,9 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  background-color: #f0f8ff;
-  padding: .75rem 1rem;
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.video-list li:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-
-/* Base card styling (mobile-first) */
-.resources-list li {
-  list-style: none;       /* remove bullets */
-  margin-bottom: 1rem;
-}
-
-/* ==================== Unified Clickable Cards ==================== */
-
-/* Base card styling for video links, resources, and downloads (mobile-first) */
-.video-list li a,
-.resources-list li a {
+.video-list li a {
   display: block;
   background-color: #f9fafb;
   padding: 0.75rem 1rem;
@@ -227,24 +204,22 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   box-shadow: 0 3px 8px rgba(0,0,0,0.06);
   color: #2b6cb0;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  text-align: center;       /* center text on mobile */
-  max-width: 90%;           /* mobile-friendly width */
-  margin: 0 auto 1rem auto; /* center horizontally on mobile */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  max-width: 90%;
+  margin: 0 auto 1rem auto;
   cursor: pointer;
 }
 
-/* Hover and focus effects */
 .video-list li a:hover,
-.video-list li a:focus,
-.resources-list li a:hover,
-.resources-list li a:focus {
+.video-list li a:focus {
   background-color: #e7f0ff;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
   outline: none;
 }
-/* ==================== Resource Boxes ==================== */
+
+/* ==================== Resource Box ==================== */
 .resource-box {
   text-align: center;
   align-self: center;
@@ -257,15 +232,9 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.resource-box:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
-
-
-.sidebar nav a {
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.sidebar nav a:hover {
-  transform: translateX(2px);
+.resource-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
 /* ==================== Buttons ==================== */
@@ -277,12 +246,19 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   margin: 0 0 1rem 0;
   align-self: stretch;
   word-break: break-word;
-  transition: background-color 0.2s ease, transform 0.2s ease;
   cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.download:hover, .download2:hover, .download3:hover { transform: translateY(-2px); filter: brightness(1.1); }
-.download:focus, .download2:focus, .download3:focus { outline: 3px solid #54c4e9; outline-offset: 2px; }
+.download:hover, .download2:hover, .download3:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.download:focus, .download2:focus, .download3:focus {
+  outline: 3px solid #54c4e9;
+  outline-offset: 2px;
+}
 
 .download { background-color: #f9a8d4; color: #111; }
 .download2 { background-color: #b8f2ff; color: #111; }
@@ -305,30 +281,53 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
 
 /* ==================== Desktop Layout ==================== */
 @media (min-width: 769px) {
-  section { flex-direction: row; align-items: flex-start; gap: 2rem; }
-  section > figure, section > div { flex: 1 1 50%; width: 50%; }
+  /* Sidebar spacing for main content */
+  main {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-  .section-double-image { flex-direction: row; gap: 1rem; }
-  .section-double-image > img { flex: 1; width: 100%; height: auto; }
+  section {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  section > figure,
+  section > div {
+    flex: 1 1 50%;
+    width: 50%;
+  }
+
+  .section-double-image {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .section-double-image > img {
+    flex: 1;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Adjust cards on desktop */
+  .video-list { text-align: left; }
+  .video-list li { justify-content: flex-start; margin-bottom: 1rem; }
+  .video-list li a,
+  .resources-list li a {
+    text-align: left;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+
+  .resource-box {
+    text-align: left;
+    max-width: 100%;
+    align-self: stretch;
+  }
 
   body { font-size: 1.5rem; line-height: 2.25rem; }
   h1 { font-size: 2.8rem; line-height: 3.2rem; }
   h2 { font-size: 2rem; line-height: 2.4rem; }
   p, li { font-size: 1.5rem; line-height: 2.25rem; }
-
-  .video-list { text-align: left; }
-  .video-list li { justify-content: flex-start; margin-bottom: 1rem;}
-
-  /* Left-align all clickable cards */
-  .video-list li a,
-  .resources-list li a{
-    text-align: left;
-    max-width: 100%;
-    margin: 0 0 1rem 0; /* remove horizontal centering */
-  }
-  .video-list li,
-  .resources-list li {
-    display: block;
-  }
-  .resource-box { text-align: left; max-width: 100%; align-self: stretch; }
 }
