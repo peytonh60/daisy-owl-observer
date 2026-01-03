@@ -114,7 +114,7 @@ header {
 
 /* ==================== Main Content ==================== */
 main {
-  max-width: 900px;
+  max-width: 1010px;
   margin: 0 auto;
   padding: 80px var(--container-padding) 24px;
 }
@@ -218,6 +218,63 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
   outline: none;
 }
+/* ==================== Lists ==================== */
+.video-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.video-list li {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background-color: #f0f8ff;
+  padding: .75rem 1rem;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Base card styling (mobile-first) */
+.resources-list li {
+  list-style: none;       /* remove bullets */
+  margin-bottom: 1rem;
+}
+.directions {
+  list-style:none;
+  margin: 5px auto;
+  text-align: left;
+}
+/* ==================== Unified Clickable Cards ==================== */
+
+/* Base card styling for video links, resources, and downloads (mobile-first) */
+.video-list li a,
+.resources-list li a {
+  display: block;
+  background-color: #f9fafb;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  color: #2b6cb0;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  text-align: center;       /* center text on mobile */
+  max-width: 90%;           /* mobile-friendly width */
+  margin: 0 auto 1rem auto; /* center horizontally on mobile */
+  cursor: pointer;
+}
+
+/* Hover and focus effects */
+.video-list li a:hover,
+.video-list li a:focus,
+.resources-list li a:hover,
+.resources-list li a:focus {
+  background-color: #e7f0ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  outline: none;
+}
 
 /* ==================== Resource Box ==================== */
 .resource-box {
@@ -311,8 +368,8 @@ a { text-decoration: underline; text-underline-offset: 2px; color: #2b6cb0; word
   }
 
   /* Adjust cards on desktop */
-  .video-list { text-align: left; }
-  .video-list li { justify-content: flex-start; margin-bottom: 1rem; }
+  .video-list, .directions { text-align: left; }
+  .video-list li, .directions li { justify-content: flex-start; margin-bottom: 1rem; }
   .video-list li a,
   .resources-list li a {
     text-align: left;
